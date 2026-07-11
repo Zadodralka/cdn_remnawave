@@ -106,60 +106,6 @@ docker exec remnanode ls -la /etc/letsencrypt/live/ваш_домен/
   },
   "inbounds": [
     {
-      "tag": "Netherlands",
-      "port": 443,
-      "protocol": "vless",
-      "settings": {
-        "clients": [],
-        "decryption": "none"
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls", "quic"]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-          "dest": "/dev/shm/nginx.sock",
-          "show": false,
-          "xver": 1,
-          "spiderX": "",
-          "shortIds": ["8b9da193c26e6712"],
-          "privateKey": "ВАШ_PRIVATE_KEY",
-          "serverNames": ["ваш_домен"]
-        }
-      }
-    },
-    {
-      "tag": "Netherlands_XHTTP",
-      "listen": "/dev/shm/xrxh.socket,0666",
-      "protocol": "vless",
-      "settings": {
-        "clients": [],
-        "fallbacks": [],
-        "decryption": "none"
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls", "quic"]
-      },
-      "streamSettings": {
-        "network": "xhttp",
-        "xhttpSettings": {
-          "mode": "auto",
-          "path": "/xhttppath/",
-          "extra": {
-            "noSSEHeader": true,
-            "xPaddingBytes": "100-1000",
-            "scMaxBufferedPosts": 30,
-            "scMaxEachPostBytes": 1000000,
-            "scStreamUpServerSecs": "20-80"
-          }
-        }
-      }
-    },
-    {
       "tag": "XHTTP_mws",
       "port": 10087,
       "listen": "0.0.0.0",
@@ -313,7 +259,7 @@ server {
 1. Зарегистрируйтесь / войдите в МТС ID, проверьте наличие гранта на балансе (при необходимости пополните через окно гранта).
 2. Создайте новый CDN-ресурс:
    - **Источник**: `https://IP_вашего_сервера:10087`
-   - **Заголовок Host**: ваш исходный домен (например `nl.unlockless.com`) — **без** `https://` и без порта
+   - **Заголовок Host**: ваш исходный домен (например `exemle.domain.com`) — **без** `https://` и без порта
    - **WebSocket** и все прочие опции (кэширование, редиректы, изменение SNI) — **выключить**
 3. Сохраните, скопируйте выданный CDN-домен (вида `topXXXXXXXXXX.mwscdn.ru`).
 4. В Remnawave создайте host (см. раздел 4), используя этот CDN-домен как Address/SNI/Host.
