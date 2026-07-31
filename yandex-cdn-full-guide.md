@@ -1,4 +1,4 @@
-# Полный гайд: VLESS + XHTTP через Yandex Cloud CDN (nginx) для Remnawave
+# VLESS + XHTTP через Yandex Cloud CDN (nginx) для Remnawave
 
 Схема проксирования VLESS/XHTTP-трафика через Yandex Cloud CDN с прохождением через **nginx** и усиленной обфускацией трафика. В отличие от схемы с МТС CDN (mwscdn.ru), здесь nginx остаётся в цепочке как обычный reverse-proxy, потому что Yandex CDN по умолчанию не блокирует нужные HTTP-методы так жёстко, как МТС.
 
