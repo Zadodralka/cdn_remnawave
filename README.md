@@ -10,7 +10,7 @@
 Любая сумма — уже приятно. Спасибо, что пользуешься моим репозиторием! 🚀
 
 
-## 🚀 Быстрый запуск (одна команда)
+## 🚀 Быстрый запуск
 
 ```bash
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Zadodralka/cdn_remnawave/main/setup-yandex-cdn.sh)"
