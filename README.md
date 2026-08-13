@@ -10,7 +10,7 @@
 ## 🚀 Быстрый запуск (одна команда)
 
 ```bash
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Zadodralka/main/setup-yandex-cdn.sh)"
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Zadodralka/cdn_remnawave/main/setup-yandex-cdn.sh)"
 ```
 ---
 
