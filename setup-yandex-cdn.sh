@@ -1072,6 +1072,8 @@ EOF
   log "Логи: ${LOG_DIR}"
   log "Повторный запуск диагностики: bash $0 --diagnose-only"
   hr
+  echo -e "${GRAY}  Если скрипт помог — ЮMoney: https://yoomoney.ru/to/4100118233876883${NC}"
+  hr
 }
 
 if [ "${1:-}" = "--diagnose-only" ]; then
@@ -1079,10 +1081,7 @@ if [ "${1:-}" = "--diagnose-only" ]; then
   banner
   load_or_ask_config
   run_diagnostics
-elif [ "${BASH_SOURCE[0]}" = "${0}" ]; then
-  # Запущен напрямую (не через `source`) - выполняем полную настройку.
-  main "$@"
-else
+elif (return 0 2>/dev/null); then
   # Скрипт подключён через `source setup-yandex-cdn.sh` - main() не
   # запускается автоматически. Это специально для тестирования: можно
   # вызывать отдельные функции руками из интерактивного bash, например:
@@ -1090,4 +1089,12 @@ else
   #   detect_nginx_container
   #   ORIGIN_DOMAIN=test.example.com NGINX_CONTAINER=test-nginx detect_nginx_conf_file
   :
+else
+  # Запущен напрямую - как обычный файл (`bash setup-yandex-cdn.sh`),
+  # так и через `bash -c "$(curl -fsSL .../setup-yandex-cdn.sh)"` (тут
+  # BASH_SOURCE вообще не определён, поэтому используется `return`-трюк:
+  # `return` завершается успешно только внутри функции/source, а на
+  # верхнем уровне скрипта (в обоих случаях выше) - с ошибкой, что и
+  # отличает "выполняется" от "подключён через source").
+  main "$@"
 fi
